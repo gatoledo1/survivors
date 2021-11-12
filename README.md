@@ -1,34 +1,94 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🧟‍♂️ Survivors
+- Interface React/NextJS rodando em SSR
+- API GraphQL e MongoDB
+- Banco de dados hospedado em https://cloud.mongodb.com/
 
-## Getting Started
 
-First, run the development server:
+Faça o clone deste repositório e também do servidor
 
-```bash
-npm run dev
-# or
-yarn dev
+Repositório do servidor: https://github.com/gatoledo1/graphql
+
+-----------
+
+## 🚀 Acessar e testar de forma rápida
+
+https://survivors-blue.vercel.app/
+
+
+-----------
+
+### ✅ Rodar o código fonte em ambiente local
+
+Clone este repositório e também o repositório do servidor, eles não precisam ficar na mesma pasta, o servidor só precisa ser startado 
+
+
+#### Para rodar o projeto, as versões do NodeJS esperadas são:
+- ^12.22.0
+- ^14.16.0
+-  16.0.0
+
+<a href="https://nodejs.org/en/download/" target="_blank">Link para download </a>
+
+Caso já possua outra versão do NodeJS instalada em sua maquina, use o comando a seguir para trocar de versão
+```javascript
+node -v //14.17.5
+
+nvm use 14.17.5 
+``` 
+-------------
+
+Abra duas janelas do terminal, uma com este repositório e a outra no diretório do servidor GraphQL
+
+- Instale os pacotes necessários em ambos os projetos com o comando:
+```javascript
+yarn
+
+//ou
+
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Execute ambos os projetos 
+```javascript
+//Servidor GraphQL
+yarn start
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+//Frontend Survivors
+yarn dev
+//ou 
+yarn build && yarn start
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+#### ⚠️ Orientações
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Não funcionou criar variaveis de ambiente para subir na Vercel, a plataforma pegava o link correto, mas inseria /graphql no final da url, então optei por setar manualmente.
+Sendo assim, ao executar o front, o aquivo 'survivors/apollo/client.tsx' irá requisitar o servidor hospedado no Heroku, mude para o ambiente local da seguinte forma:
+```javascript
+///apollo/client.tsx -- Arquivo atual
 
-## Learn More
+let apolloClient: any
 
-To learn more about Next.js, take a look at the following resources:
+const httpLink = new HttpLink({ 
+  uri: "https://graphql-api-survivors.herokuapp.com",
+});
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+function createApolloClient() {
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Para essa configuração 
 
-## Deploy on Vercel
+```javascript
+///apollo/client.tsx -- Modificação para ambiente local
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+let apolloClient: any
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+const httpLink = new HttpLink({ 
+  uri: "http://localhost:4000",
+});
+
+function createApolloClient() {
+```
+Após trocar o link, restart os projetos
+
+
+
