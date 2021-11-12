@@ -4,7 +4,7 @@ import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client'
 let apolloClient: any
 
 const httpLink = new HttpLink({ 
-  uri: "http://localhost:4000",
+  uri: "https://graphql-api-survivors.herokuapp.com",
 });
 
 function createApolloClient() {
