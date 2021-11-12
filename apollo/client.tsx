@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client'
 
-let apolloClient
+let apolloClient: any
 
 const httpLink = new HttpLink({ 
   uri: "http://localhost:4000",
@@ -39,7 +39,7 @@ export function initializeApollo(initialState = null) {
   }
 }
 
-export function useApollo(initialState) {
+export function useApollo(initialState: null | undefined) {
   const store = useMemo(() => initializeApollo(initialState), [initialState])
   return store
 }
