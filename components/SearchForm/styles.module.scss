@@ -1,9 +1,9 @@
 .searchContainer {
-    display: block;
-    width: 80%;
-    margin: auto;
-    border-bottom: 1px solid #dadada;
-    margin-bottom: 30px;
+  display: block;
+  width: 80%;
+  margin: auto;
+  border-bottom: 1px solid #dadada;
+  margin-bottom: 30px;
 }
 
 input.search {
@@ -14,12 +14,12 @@ input.search {
   box-shadow: 0 8px 20px -8px #d9dfec;
 
   @media (min-width: 768px) {
-      padding: 12px 40px 12px 20px;
-      font-size: 15px;
+    padding: 12px 40px 12px 20px;
+    font-size: 15px;
   }
 
   &:focus {
-      outline: none;
+    outline: none;
   }
 }
 
@@ -44,69 +44,69 @@ button.btnSearch {
   display: flex;
   justify-content: center;
   margin-bottom: 60px;
-  
+
   div {
-      width: 100%;
-      position: relative;
-      display: flex;
-      margin-left: 15px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    margin-left: 15px;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+      margin-left: 0;
       justify-content: center;
-      
-      @media (min-width: 768px) {
-          margin-left: 0;
-          justify-content: center;
-      }
+    }
   }
 
   @media (min-width: 768px) {
-      justify-content: flex-start;
-      order: 0;
+    justify-content: flex-start;
+    order: 0;
   }
 }
 
 .rowSearch.iconSearch {
   input.search {
-      position: relative;
-      border-radius: 30px;
-      transition: all 0.3s ease-in-out;
-      width: 55%;
-      &:focus {
-          width: 100%;
-          ~ {
-              button.btnSearch {
-                  background-image: url("/search.svg");
-                  background-repeat: no-repeat;
-                  background-position: center;
-              }
-          }
+    position: relative;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+    width: 55%;
+    &:focus {
+      width: 100%;
+      ~ {
+        button.btnSearch {
+          background-image: url("/search.svg");
+          background-repeat: no-repeat;
+          background-position: center;
+        }
       }
-      &::placeholder {
-          color: var(--gray-200)
-      }
+    }
+    &::placeholder {
+      color: #aaa;
+    }
   }
-  
-  button {
-      transition: all 0.3s ease-in-out;
-  }
-  
-  button.btnSearch {
-      background-image: url("/search.svg");
-      background-color: #dee8ff;
-      background-repeat: no-repeat;
-      background-position: center;
-      border-radius: 30px;
-      height: 27px;
-      width: 27px;
-      right: 30px;
-      top: 3px;
-      transition: all 0.3s ease-in-out;
 
-      @media (min-width: 768px) {
-          height: 35px;
-          width: 35px;
-          right: 40px;
-          top: 4px;
-          padding: 17px;
-      }
+  button {
+    transition: all 0.3s ease-in-out;
+  }
+
+  button.btnSearch {
+    background-image: url("/search.svg");
+    background-color: #dee8ff;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 30px;
+    height: 27px;
+    width: 27px;
+    right: 30px;
+    top: 3px;
+    transition: all 0.3s ease-in-out;
+
+    @media (min-width: 768px) {
+      height: 35px;
+      width: 35px;
+      right: 40px;
+      top: 4px;
+      padding: 17px;
+    }
   }
 }

@@ -1,9 +1,9 @@
 import { gql } from "@apollo/client";
 
 export const Infect = gql`
-  mutation Infect($id: ID!){
+  mutation Infect($id: ID!, $attr: Boolean!){
     Infected(id: $id, input: {
-      infectado: true
+      infectado: $attr
     }) {
       name
       infectado

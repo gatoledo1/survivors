@@ -1,12 +1,12 @@
-import type { GetServerSideProps, NextPage } from 'next'
-import { initializeApollo } from "../apollo/client"
+import type { GetServerSideProps } from 'next'
+import { initializeApollo } from '../apollo/client'
 import Head from 'next/head'
-import Image from 'next/image'
+//import Image from 'next/image'
 import { Survivors } from '../graphql'
 import { Card, SearchForm } from '../components'
 
 const Home = ({ survivors }: HomeData) => {
-  const search: string[] = []
+  const search: Array<string> = []
 
   return (
     <div className="wrapper">
@@ -15,29 +15,32 @@ const Home = ({ survivors }: HomeData) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      
+      <small style={{ color: '#888', marginBottom: 25 }}>
+        Obs: Imagens `randomizadas` para ilustrar a interface
+      </small>
+
       <SearchForm search={search} survivors={survivors} />
 
-      {
-        survivors.length > 0 &&
+      {survivors.length > 0 &&
         survivors.map((item, index) => {
-
           search.push(item.name)
 
           return (
-            <Card key={item.id} idItem={item.id}
-            name={item.name} attribute={item.attribute}
-            email={item.email} infectado={item.infectado} />
+            <Card
+              key={item.id}
+              idItem={item.id}
+              name={item.name}
+              attribute={item.attribute}
+              email={item.email}
+              infectado={item.infectado}
+            />
           )
-        })
-      }
-
+        })}
     </div>
   )
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-
   const apolloClient = initializeApollo()
 
   const querySurvivors = await apolloClient.query({
@@ -50,7 +53,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       survivors,
     },
-  };
+  }
 }
 
 export default Home
