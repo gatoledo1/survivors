@@ -12,7 +12,13 @@ Repositório do servidor: https://github.com/gatoledo1/graphql
 
 ## 🚀 Acessar e testar de forma rápida
 
+### Frontend
+
 https://survivors-blue.vercel.app/
+
+#### Verifique e teste os dados no servidor GraphQL
+
+http://graphql-api-survivors.herokuapp.com/
 
 
 -----------
